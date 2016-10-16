@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD81EB11DB2718800FDD836 /* MyTextView.swift */; };
 		7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */; };
 		7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83441DB22AB6005A7A7B /* ViewController.swift */; };
 		7FEE83481DB22AB6005A7A7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE83461DB22AB6005A7A7B /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		7FEE834D1DB22AB6005A7A7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE834B1DB22AB6005A7A7B /* LaunchScreen.storyboard */; };
 		7FEE83581DB22AB6005A7A7B /* MyTextFieldAndViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83571DB22AB6005A7A7B /* MyTextFieldAndViewTests.swift */; };
 		7FEE83631DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83621DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift */; };
+		7FEE83711DB22B04005A7A7B /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83701DB22B04005A7A7B /* MyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7FD81EB11DB2718800FDD836 /* MyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextView.swift; sourceTree = "<group>"; };
 		7FEE833F1DB22AB6005A7A7B /* MyTextFieldAndView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTextFieldAndView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FEE83441DB22AB6005A7A7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		7FEE835E1DB22AB6005A7A7B /* MyTextFieldAndViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTextFieldAndViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE83621DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldAndViewUITests.swift; sourceTree = "<group>"; };
 		7FEE83641DB22AB6005A7A7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FEE83701DB22B04005A7A7B /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */,
 				7FEE83441DB22AB6005A7A7B /* ViewController.swift */,
+				7FEE83701DB22B04005A7A7B /* MyTextField.swift */,
+				7FD81EB11DB2718800FDD836 /* MyTextView.swift */,
 				7FEE83461DB22AB6005A7A7B /* Main.storyboard */,
 				7FEE83491DB22AB6005A7A7B /* Assets.xcassets */,
 				7FEE834B1DB22AB6005A7A7B /* LaunchScreen.storyboard */,
@@ -262,6 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FEE83711DB22B04005A7A7B /* MyTextField.swift in Sources */,
+				7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */,
 				7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */,
 				7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */,
 			);
@@ -512,6 +520,7 @@
 				7FEE83691DB22AB6005A7A7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FEE836A1DB22AB6005A7A7B /* Build configuration list for PBXNativeTarget "MyTextFieldAndViewTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +529,7 @@
 				7FEE836C1DB22AB6005A7A7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FEE836D1DB22AB6005A7A7B /* Build configuration list for PBXNativeTarget "MyTextFieldAndViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +538,7 @@
 				7FEE836F1DB22AB6005A7A7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
