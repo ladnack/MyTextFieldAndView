@@ -45,7 +45,13 @@ class CustomViewController: UIViewController {
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
         
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomViewController.textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
+        
         self.view.addSubview(textField)
+    }
+    
+    func textFieldTextDidChanged(_ notification: NSNotification) {
+        print("UITextFieldTextDidChange!")
     }
     
     func configButton() {

@@ -20,27 +20,30 @@ class CustomTextView: UITextView {
         }
     }
     
-    private func drawPlaceholder(in rect: CGRect) {
+    func drawPlaceholder(in rect: CGRect) {
         // 通知を登録する
         NotificationCenter.default.addObserver(self, selector: #selector(CustomTextView.controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
     }
     
     //  TextViewのTextが変更された時に呼ばれる
     func controlPlaceholder(_ notification: NSNotification) {
-        print("UITextViewTextDidChange")
-        if let viewText = self.text {
-            if viewText.isEmpty {
-                placeholderLabel.isHidden = false
-            } else {
-                placeholderLabel.isHidden = true
-            }
-        }
+        print("UITextViewTextDidChange!")
+        placeholderIsHidden()
 
+    }
+    
+    private func placeholderIsHidden() {
+        if text.isEmpty {
+            placeholderLabel.isHidden = false
+        } else {
+            placeholderLabel.isHidden = true
+        }
     }
     
     override var text: String! {
         didSet {
             print("didiSet: " + text)
+            placeholderIsHidden()
         }
     }
     
@@ -49,7 +52,6 @@ class CustomTextView: UITextView {
             print("didiSet: \(textAlignment)")
         }
     }
-    
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
