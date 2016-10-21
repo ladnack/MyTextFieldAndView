@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         
         
 //        let myTextView = MyTextView(frame: CGRect(x: 50, y: 50, width: 100, height: 100))
+//        myTextView.textAlignment
 //        myTextView.setText(text: "SCANDAL")
 //        myTextView.placeHolder = "SCANDAL"
 //        myTextView.placeHolderColor = UIColor.lightGray.withAlphaComponent(0.6)

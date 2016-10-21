@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F44DFA11DB8EB8800BAC49D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */; };
 		7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD81EB11DB2718800FDD836 /* MyTextView.swift */; };
 		7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */; };
 		7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83441DB22AB6005A7A7B /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		7FD81EB11DB2718800FDD836 /* MyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextView.swift; sourceTree = "<group>"; };
 		7FEE833F1DB22AB6005A7A7B /* MyTextFieldAndView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTextFieldAndView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				7FEE83441DB22AB6005A7A7B /* ViewController.swift */,
 				7FEE83701DB22B04005A7A7B /* MyTextField.swift */,
 				7FD81EB11DB2718800FDD836 /* MyTextView.swift */,
+				7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */,
 				7FEE83461DB22AB6005A7A7B /* Main.storyboard */,
 				7FEE83491DB22AB6005A7A7B /* Assets.xcassets */,
 				7FEE834B1DB22AB6005A7A7B /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FEE83711DB22B04005A7A7B /* MyTextField.swift in Sources */,
+				7F44DFA11DB8EB8800BAC49D /* CustomTextView.swift in Sources */,
 				7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */,
 				7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */,
 				7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */,
