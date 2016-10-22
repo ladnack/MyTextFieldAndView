@@ -10,19 +10,19 @@ import UIKit
 
 class CustomTextView: UITextView {
     
-     private let placeholderLabel: UILabel = UILabel()
+    private let placeholderLabel = UILabel()
     
     // default is nil. string is drawn 70% gray
     var placeholder: String? {
         didSet {
             print("placeholder did set.")
-            drawPlaceholder(in: self.frame)
+            drawPlaceholder(in: frame)
         }
     }
     
     func drawPlaceholder(in rect: CGRect) {
         // 通知を登録する
-        NotificationCenter.default.addObserver(self, selector: #selector(CustomTextView.controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
     }
     
     //  TextViewのTextが変更された時に呼ばれる
@@ -38,6 +38,8 @@ class CustomTextView: UITextView {
         } else {
             placeholderLabel.isHidden = true
         }
+        
+//        placeholderLabel.isHidden = !text.isEmpty
     }
     
     override var text: String! {
@@ -50,6 +52,7 @@ class CustomTextView: UITextView {
     override var textAlignment: NSTextAlignment {
         didSet {
             print("didiSet: \(textAlignment)")
+            placeholderLabel.textAlignment = self.textAlignment
         }
     }
     
@@ -59,15 +62,17 @@ class CustomTextView: UITextView {
         super.draw(rect)
         
         placeholderLabel.frame = rect
+//        placeholderLabel.frame.origin = CGPoint.zero
         placeholderLabel.text = placeholder
         placeholderLabel.font = self.font
-        placeholderLabel.backgroundColor = UIColor.clear
+        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         placeholderLabel.textAlignment = self.textAlignment
-        placeholderLabel.sizeToFit()
+//        placeholderLabel.textAlignment = .center
+//        placeholderLabel.sizeToFit()
         
         self.addSubview(placeholderLabel)
-        self.sendSubview(toBack: placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
         print("Add placeholderLabel as subView")
     }
     

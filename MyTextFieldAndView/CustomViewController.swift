@@ -10,8 +10,8 @@ import UIKit
 
 class CustomViewController: UIViewController {
     
-    var textView: CustomTextView = CustomTextView()
-    var textField: UITextField = UITextField()
+    var textView = CustomTextView()
+    var textField = MyTextField()
     
     var width: CGFloat = 200
     var textViewHeight: CGFloat = 100
@@ -45,7 +45,7 @@ class CustomViewController: UIViewController {
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
         
-        NotificationCenter.default.addObserver(self, selector: #selector(CustomViewController.textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
         
         self.view.addSubview(textField)
     }
@@ -62,7 +62,7 @@ class CustomViewController: UIViewController {
         button.setTitleColor(UIColor.red, for: .normal)
         button.setTitle("Pushed", for: .highlighted)
         button.setTitleColor(UIColor.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(CustomViewController.tapButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         
         self.view.addSubview(button)
     }
@@ -70,7 +70,7 @@ class CustomViewController: UIViewController {
     func tapButton(_ sender: UIButton) {
         print("TapButton!")
         textView.text = textView.text + "+addText"
-//        textView.textAlignment = .center
+        textView.textAlignment = .center
         textField.text = textField.text! + "+addText"
     }
     

@@ -9,6 +9,12 @@
 import UIKit
 
 class MyTextField: UITextField {
+    
+    override var text: String? {
+        didSet{
+            print("TextField.didSet: \(text)")
+        }
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
