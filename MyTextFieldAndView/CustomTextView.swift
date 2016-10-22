@@ -8,16 +8,22 @@
 
 import UIKit
 
+@IBDesignable
 class CustomTextView: UITextView {
     
     private let placeholderLabel = UILabel()
     
     // default is nil. string is drawn 70% gray
-    var placeholder: String? {
+    @IBInspectable var placeholder: String? {
         didSet {
             print("placeholder did set.")
             drawPlaceholder(in: frame)
         }
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func drawPlaceholder(in rect: CGRect) {
@@ -41,6 +47,9 @@ class CustomTextView: UITextView {
         
 //        placeholderLabel.isHidden = !text.isEmpty
     }
+    
+    
+    // MARK: - override property or method
     
     override var text: String! {
         didSet {
@@ -78,3 +87,21 @@ class CustomTextView: UITextView {
     
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

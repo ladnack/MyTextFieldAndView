@@ -10,9 +10,9 @@ import UIKit
 
 class MyTextView: UITextView {
     
-    var placeHolderLabel: UILabel      = UILabel()
-    var placeHolderColor: UIColor      = UIColor.lightGray
-    var placeHolder: NSString          = ""
+    var placeholderLabel: UILabel      = UILabel()
+    var placeholderColor: UIColor      = UIColor.lightGray
+    var placeholder: NSString          = ""
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -30,24 +30,24 @@ class MyTextView: UITextView {
     }
     
     override func draw(_ rect: CGRect) {
-        if placeHolder.length > 0 {
-            placeHolderLabel.frame           = CGRect(x: 8, y: 8, width: self.bounds.size.width - 16, height:0)
-            placeHolderLabel.lineBreakMode   = .byWordWrapping
-            placeHolderLabel.numberOfLines   = 0
-            placeHolderLabel.font            = self.font
-            placeHolderLabel.backgroundColor = UIColor.clear
-            placeHolderLabel.textColor       = placeHolderColor
-            placeHolderLabel.alpha           = 0
-            placeHolderLabel.tag             = 999
+        if placeholder.length > 0 {
+            placeholderLabel.frame           = CGRect(x: 8, y: 8, width: self.bounds.size.width - 16, height: 0)
+            placeholderLabel.lineBreakMode   = .byWordWrapping
+            placeholderLabel.numberOfLines   = 0
+            placeholderLabel.font            = self.font
+            placeholderLabel.backgroundColor = UIColor.clear
+            placeholderLabel.textColor       = placeholderColor
+            placeholderLabel.alpha           = 0
+            placeholderLabel.tag             = 999
             
-            placeHolderLabel.text = placeHolder as String
-            placeHolderLabel.sizeToFit()
-            self.addSubview(placeHolderLabel)
+            placeholderLabel.text = placeholder as String
+            placeholderLabel.sizeToFit()
+            self.addSubview(placeholderLabel)
         }
         
-        self.sendSubview(toBack: placeHolderLabel)
+        self.sendSubview(toBack: placeholderLabel)
         
-        if self.text.characters.count == 0 && placeHolder.length > 0 {
+        if self.text.characters.count == 0 && placeholder.length > 0 {
             self.viewWithTag(999)?.alpha = 1
         }
         
@@ -55,7 +55,7 @@ class MyTextView: UITextView {
     }
     
     func textChanged(notification: NSNotification?)  {
-        if self.placeHolder.length == 0 {
+        if self.placeholder.length == 0 {
             return
         }
         
@@ -67,18 +67,6 @@ class MyTextView: UITextView {
     }
     
 }
-
-
-//protocol MyTextViewDelegate: UITextViewDelegate {
-//    
-//}
-//
-//extension MyTextViewDelegate {
-//    func textViewDidChange(_ textView: UITextView) {
-//        <#code#>
-//    }
-//
-//}
 
 
 
