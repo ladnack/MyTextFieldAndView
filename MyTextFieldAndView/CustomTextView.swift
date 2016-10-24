@@ -29,23 +29,28 @@ class CustomTextView: UITextView {
     func drawPlaceholder(in rect: CGRect) {
         // 通知を登録する
         NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
     }
     
-    //  TextViewのTextが変更された時に呼ばれる
+    // TextViewのTextが変更された時に呼ばれる
     func controlPlaceholder(_ notification: NSNotification) {
-        print("UITextViewTextDidChange!")
+        print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
-
+    }
+    
+    // TextViewのTextが編集終了時に呼ばれる
+    func textViewTextDidEndEditing(_ notification: NSNotification) {
+        print("Notification->UITextViewTextDidEndEditing!")
     }
     
     private func placeholderIsHidden() {
-        if text.isEmpty {
-            placeholderLabel.isHidden = false
-        } else {
-            placeholderLabel.isHidden = true
-        }
+//        if text.isEmpty {
+//            placeholderLabel.isHidden = false
+//        } else {
+//            placeholderLabel.isHidden = true
+//        }
         
-//        placeholderLabel.isHidden = !text.isEmpty
+        placeholderLabel.isHidden = !text.isEmpty
     }
     
     

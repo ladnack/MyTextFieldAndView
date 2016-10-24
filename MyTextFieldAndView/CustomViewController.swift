@@ -36,6 +36,7 @@ class CustomViewController: UIViewController {
         textView.layer.position = CGPoint(x: posX, y: 100)
         textView.text = "Fist text"
         textView.placeholder = "Placeholder"
+        textView.delegate = self
         
         self.view.addSubview(textView)
     }
@@ -46,14 +47,22 @@ class CustomViewController: UIViewController {
         textField.text = "Fist text"
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
+        textField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidEndEditing(_:)), name: .UITextFieldTextDidEndEditing, object: nil)
         
         self.view.addSubview(textField)
     }
     
+    // TextFieldのTextが変更された時に呼ばれる
     func textFieldTextDidChanged(_ notification: NSNotification) {
-        print("UITextFieldTextDidChange!")
+        print("Notification->UITextFieldTextDidChange!")
+    }
+    
+    // TextFieldのTextが編集終了時に呼ばれる
+    func textFieldTextDidEndEditing(_ notification: NSNotification) {
+        print("Notification->UITextFieldTextDidEndEditing!")
     }
     
     func configButton() {
@@ -78,3 +87,33 @@ class CustomViewController: UIViewController {
     
 
 }
+
+
+extension CustomViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+
+extension CustomViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print("Delegate->textViewDidChange")
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
