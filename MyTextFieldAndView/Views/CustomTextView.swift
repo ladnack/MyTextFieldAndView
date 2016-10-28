@@ -17,39 +17,57 @@ class CustomTextView: UITextView {
     @IBInspectable var placeholder: String? {
         didSet {
             print("placeholder did set.")
-            drawPlaceholder(in: frame)
         }
     }
     
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    init(frame: CGRect) {
+        super.init(frame: frame, textContainer: nil)
+        initialize()
+        drawPlaceholder(in: frame)
     }
     
-    func drawPlaceholder(in rect: CGRect) {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initialize() {
         // 通知を登録する
         NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func drawPlaceholder(in rect: CGRect) {
+        placeholderLabel.frame = rect
+//        placeholderLabel.frame.origin = CGPoint.zero
+        placeholderLabel.text = placeholder
+        placeholderLabel.font = self.font
+        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
+        placeholderLabel.textAlignment = self.textAlignment
+//        placeholderLabel.textAlignment = .center
+        placeholderLabel.sizeToFit()
+        
+        self.addSubview(placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
+        print("Add placeholderLabel as subView")
+    }
+    
     // TextViewのTextが変更された時に呼ばれる
-    func controlPlaceholder(_ notification: NSNotification) {
+    @objc private func controlPlaceholder(_ notification: NSNotification) {
         print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
     }
     
     // TextViewのTextが編集終了時に呼ばれる
-    func textViewTextDidEndEditing(_ notification: NSNotification) {
+    @objc private func textViewTextDidEndEditing(_ notification: NSNotification) {
         print("Notification->UITextViewTextDidEndEditing!")
     }
     
     private func placeholderIsHidden() {
-//        if text.isEmpty {
-//            placeholderLabel.isHidden = false
-//        } else {
-//            placeholderLabel.isHidden = true
-//        }
-        
         placeholderLabel.isHidden = !text.isEmpty
     }
     
@@ -72,23 +90,9 @@ class CustomTextView: UITextView {
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
-        placeholderLabel.frame = rect
-//        placeholderLabel.frame.origin = CGPoint.zero
-        placeholderLabel.text = placeholder
-        placeholderLabel.font = self.font
-        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
-        placeholderLabel.textAlignment = self.textAlignment
-//        placeholderLabel.textAlignment = .center
-//        placeholderLabel.sizeToFit()
-        
-        self.addSubview(placeholderLabel)
-//        self.sendSubview(toBack: placeholderLabel)
-        print("Add placeholderLabel as subView")
-    }
+//    override func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//    }
     
 
 }

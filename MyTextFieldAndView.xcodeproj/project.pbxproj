@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F44DFA11DB8EB8800BAC49D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */; };
-		7F8195C21DB9AF830046B9B4 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8195C11DB9AF830046B9B4 /* CustomViewController.swift */; };
-		7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD81EB11DB2718800FDD836 /* MyTextView.swift */; };
+		7F7E633E1DC3085D00DD1A36 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E633A1DC3085D00DD1A36 /* PlaceHolderTextView.swift */; };
+		7F7E633F1DC3085D00DD1A36 /* MyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E633B1DC3085D00DD1A36 /* MyTextView.swift */; };
+		7F7E63401DC3085D00DD1A36 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E633C1DC3085D00DD1A36 /* MyTextField.swift */; };
+		7F7E63411DC3085D00DD1A36 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E633D1DC3085D00DD1A36 /* CustomTextView.swift */; };
+		7F7E63441DC3087900DD1A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E63421DC3087900DD1A36 /* ViewController.swift */; };
+		7F7E63451DC3087900DD1A36 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E63431DC3087900DD1A36 /* CustomViewController.swift */; };
 		7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */; };
-		7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83441DB22AB6005A7A7B /* ViewController.swift */; };
 		7FEE83481DB22AB6005A7A7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE83461DB22AB6005A7A7B /* Main.storyboard */; };
 		7FEE834A1DB22AB6005A7A7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE83491DB22AB6005A7A7B /* Assets.xcassets */; };
 		7FEE834D1DB22AB6005A7A7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE834B1DB22AB6005A7A7B /* LaunchScreen.storyboard */; };
 		7FEE83581DB22AB6005A7A7B /* MyTextFieldAndViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83571DB22AB6005A7A7B /* MyTextFieldAndViewTests.swift */; };
 		7FEE83631DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83621DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift */; };
-		7FEE83711DB22B04005A7A7B /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE83701DB22B04005A7A7B /* MyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
-		7F8195C11DB9AF830046B9B4 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
-		7FD81EB11DB2718800FDD836 /* MyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextView.swift; sourceTree = "<group>"; };
+		7F7E633A1DC3085D00DD1A36 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
+		7F7E633B1DC3085D00DD1A36 /* MyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextView.swift; sourceTree = "<group>"; };
+		7F7E633C1DC3085D00DD1A36 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		7F7E633D1DC3085D00DD1A36 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		7F7E63421DC3087900DD1A36 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7F7E63431DC3087900DD1A36 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		7FEE833F1DB22AB6005A7A7B /* MyTextFieldAndView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTextFieldAndView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7FEE83441DB22AB6005A7A7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7FEE83471DB22AB6005A7A7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FEE83491DB22AB6005A7A7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FEE834C1DB22AB6005A7A7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		7FEE835E1DB22AB6005A7A7B /* MyTextFieldAndViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTextFieldAndViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEE83621DB22AB6005A7A7B /* MyTextFieldAndViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextFieldAndViewUITests.swift; sourceTree = "<group>"; };
 		7FEE83641DB22AB6005A7A7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FEE83701DB22B04005A7A7B /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F7E632B1DC2F2FE00DD1A36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F7E633A1DC3085D00DD1A36 /* PlaceHolderTextView.swift */,
+				7F7E633B1DC3085D00DD1A36 /* MyTextView.swift */,
+				7F7E633C1DC3085D00DD1A36 /* MyTextField.swift */,
+				7F7E633D1DC3085D00DD1A36 /* CustomTextView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7F7E63351DC305C000DD1A36 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F7E63421DC3087900DD1A36 /* ViewController.swift */,
+				7F7E63431DC3087900DD1A36 /* CustomViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7FEE83361DB22AB6005A7A7B = {
 			isa = PBXGroup;
 			children = (
@@ -105,12 +127,9 @@
 		7FEE83411DB22AB6005A7A7B /* MyTextFieldAndView */ = {
 			isa = PBXGroup;
 			children = (
+				7F7E63351DC305C000DD1A36 /* Controller */,
+				7F7E632B1DC2F2FE00DD1A36 /* Views */,
 				7FEE83421DB22AB6005A7A7B /* AppDelegate.swift */,
-				7FEE83441DB22AB6005A7A7B /* ViewController.swift */,
-				7F8195C11DB9AF830046B9B4 /* CustomViewController.swift */,
-				7FEE83701DB22B04005A7A7B /* MyTextField.swift */,
-				7FD81EB11DB2718800FDD836 /* MyTextView.swift */,
-				7F44DFA01DB8EB8800BAC49D /* CustomTextView.swift */,
 				7FEE83461DB22AB6005A7A7B /* Main.storyboard */,
 				7FEE83491DB22AB6005A7A7B /* Assets.xcassets */,
 				7FEE834B1DB22AB6005A7A7B /* LaunchScreen.storyboard */,
@@ -274,12 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FEE83711DB22B04005A7A7B /* MyTextField.swift in Sources */,
-				7F44DFA11DB8EB8800BAC49D /* CustomTextView.swift in Sources */,
-				7FD81EB21DB2718800FDD836 /* MyTextView.swift in Sources */,
-				7F8195C21DB9AF830046B9B4 /* CustomViewController.swift in Sources */,
-				7FEE83451DB22AB6005A7A7B /* ViewController.swift in Sources */,
+				7F7E63441DC3087900DD1A36 /* ViewController.swift in Sources */,
+				7F7E63451DC3087900DD1A36 /* CustomViewController.swift in Sources */,
 				7FEE83431DB22AB6005A7A7B /* AppDelegate.swift in Sources */,
+				7F7E63401DC3085D00DD1A36 /* MyTextField.swift in Sources */,
+				7F7E63411DC3085D00DD1A36 /* CustomTextView.swift in Sources */,
+				7F7E633E1DC3085D00DD1A36 /* PlaceHolderTextView.swift in Sources */,
+				7F7E633F1DC3085D00DD1A36 /* MyTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

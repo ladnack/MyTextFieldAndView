@@ -11,7 +11,8 @@ import UIKit
 class CustomViewController: UIViewController {
     
 //    var textView = MyTextView()
-    var textView = CustomTextView()
+//    var textView = CustomTextView()
+    var textView: CustomTextView?
     var textField = MyTextField()
     
     
@@ -25,23 +26,26 @@ class CustomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTextView()
-        configTextField()
-        configButton()
+        configureTextView()
+        configureTextField()
+        configureButton()
         
     }
     
-    func configTextView() {
-        textView.frame.size = CGSize(width: width, height: textViewHeight)
-        textView.layer.position = CGPoint(x: posX, y: 100)
-        textView.text = "Fist text"
-        textView.placeholder = "Placeholder"
-        textView.delegate = self
-        
-        self.view.addSubview(textView)
+    func configureTextView() {
+        textView = CustomTextView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: textViewHeight)))
+        if let textView = self.textView {
+            textView.frame.size = CGSize(width: width, height: textViewHeight)
+            textView.layer.position = CGPoint(x: posX, y: 100)
+            textView.text = "Fist text"
+            textView.placeholder = "Placeholder"
+            textView.delegate = self
+            
+            self.view.addSubview(textView)
+        }
     }
     
-    func configTextField() {
+    func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
         textField.layer.position = CGPoint(x: posX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
         textField.text = "Fist text"
@@ -65,7 +69,7 @@ class CustomViewController: UIViewController {
         print("Notification->UITextFieldTextDidEndEditing!")
     }
     
-    func configButton() {
+    func configureButton() {
         let button = UIButton(type: .system)
         button.frame.size = CGSize(width: width, height: buttonHeight)
         button.layer.position = CGPoint(x: posX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
@@ -80,8 +84,8 @@ class CustomViewController: UIViewController {
     
     func tapButton(_ sender: UIButton) {
         print("TapButton!")
-        textView.text = textView.text + "+addText"
-        textView.textAlignment = .center
+        textView?.text = textView?.text ?? "" + "+addText"
+        textView?.textAlignment = .center
         textField.text = textField.text! + "+addText"
     }
     
