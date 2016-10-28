@@ -14,6 +14,7 @@ class CustomViewController: UIViewController {
 //    var textView = CustomTextView()
     var textView: CustomTextView?
     var textField = MyTextField()
+    var placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 400, width: 200, height: 200))
     
     
     var width: CGFloat = 200
@@ -29,6 +30,16 @@ class CustomViewController: UIViewController {
         configureTextView()
         configureTextField()
         configureButton()
+        
+        // プレースホルダーに値を設定する
+        placeHolderTextView.placeHolder = "プレースホルダー"
+        placeHolderTextView.placeHolderColor = UIColor.gray
+        placeHolderTextView.borderColor = UIColor.blue
+        placeHolderTextView.borderWidth = 5
+        placeHolderTextView.cornerRadius = 10
+        
+        // 画面に表示
+        self.view.addSubview(placeHolderTextView)
         
     }
     
@@ -86,7 +97,10 @@ class CustomViewController: UIViewController {
         print("TapButton!")
         textView?.text = textView?.text ?? "" + "+addText"
         textView?.textAlignment = .center
+        
         textField.text = textField.text! + "+addText"
+        
+        placeHolderTextView.text = placeHolderTextView.text + "+addText"
     }
     
 

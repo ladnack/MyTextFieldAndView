@@ -14,8 +14,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
+    var placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 初期化
+//        let placeHolderTextView = PlaceHolderTextView.init(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+        
+        // プレースホルダーに値を設定する
+        placeHolderTextView.placeHolder = "プレースホルダー"
+        placeHolderTextView.placeHolderColor = UIColor.gray
+        placeHolderTextView.borderColor = UIColor.blue
+        placeHolderTextView.borderWidth = 5
+        placeHolderTextView.cornerRadius = 10
+        
+        // 画面に表示
+        self.view.addSubview(placeHolderTextView)
+        
         
         textField.text = "ONE OK ROCK"
         textField.textColor = UIColor.blue
