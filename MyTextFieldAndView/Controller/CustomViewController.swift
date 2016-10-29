@@ -20,6 +20,7 @@ class CustomViewController: UIViewController {
     let textViewHeight: CGFloat = 100
     let textFieldhHeight: CGFloat = 50
     let buttonHeight: CGFloat = 50
+    var centerPositionX: CGFloat { return self.view.frame.width / 2}
     
     
     override func viewDidLoad() {
@@ -56,7 +57,7 @@ class CustomViewController: UIViewController {
     
     func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
-        textField.layer.position = CGPoint(x: posX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
+        textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
         textField.text = "Fist text"
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
@@ -81,7 +82,7 @@ class CustomViewController: UIViewController {
     func configureButton() {
         let button = UIButton(type: .system)
         button.frame.size = CGSize(width: width, height: buttonHeight)
-        button.layer.position = CGPoint(x: posX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
+        button.layer.position = CGPoint(x: centerPositionX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
         button.setTitle("Button", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
         button.setTitle("Pushed", for: .highlighted)
