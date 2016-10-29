@@ -17,11 +17,10 @@ class CustomViewController: UIViewController {
     var placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 400, width: 200, height: 200))
     
     
-    var width: CGFloat = 200
-    var textViewHeight: CGFloat = 100
-    var textFieldhHeight: CGFloat = 50
-    var buttonHeight: CGFloat = 50
-    var posX: CGFloat { return self.view.frame.width / 2}
+    let width: CGFloat = 200
+    let textViewHeight: CGFloat = 100
+    let textFieldhHeight: CGFloat = 50
+    let buttonHeight: CGFloat = 50
     
     
     override func viewDidLoad() {
