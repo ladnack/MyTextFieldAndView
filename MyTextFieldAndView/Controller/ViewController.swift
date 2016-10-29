@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     
-    var placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+    var placeHolderTextView: PlaceHolderTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

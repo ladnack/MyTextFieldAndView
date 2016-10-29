@@ -10,12 +10,11 @@ import UIKit
 
 class CustomViewController: UIViewController {
     
-//    var textView = MyTextView()
-//    var textView = CustomTextView()
-    var textView: CustomTextView?
-    var textField = MyTextField()
-    var placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 400, width: 200, height: 200))
+//    var textView: MyTextView!
+    var textView: CustomTextView!
     
+    var textField: MyTextField!
+    var placeHolderTextView: PlaceHolderTextView!
     
     let width: CGFloat = 200
     let textViewHeight: CGFloat = 100
