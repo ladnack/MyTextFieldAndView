@@ -29,30 +29,19 @@ class CustomViewController: UIViewController {
         configureTextView()
         configureTextField()
         configureButton()
-        
-        // プレースホルダーに値を設定する
-        placeHolderTextView.placeHolder = "プレースホルダー"
-        placeHolderTextView.placeHolderColor = UIColor.gray
-        placeHolderTextView.borderColor = UIColor.blue
-        placeHolderTextView.borderWidth = 5
-        placeHolderTextView.cornerRadius = 10
-        
-        // 画面に表示
-        self.view.addSubview(placeHolderTextView)
+        configurePlaceHolderTextView()
         
     }
     
     func configureTextView() {
         textView = CustomTextView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: textViewHeight)))
-        if let textView = self.textView {
-            textView.frame.size = CGSize(width: width, height: textViewHeight)
-            textView.layer.position = CGPoint(x: posX, y: 100)
-            textView.text = "Fist text"
-            textView.placeholder = "Placeholder"
-            textView.delegate = self
-            
-            self.view.addSubview(textView)
-        }
+        textView.frame.size = CGSize(width: width, height: textViewHeight)
+        textView.layer.position = CGPoint(x: centerPositionX, y: 100)
+        textView.text = "Fist text"
+        textView.placeholder = "Placeholder"
+        textView.delegate = self
+        
+        view.addSubview(textView)
     }
     
     func configureTextField() {
@@ -66,7 +55,7 @@ class CustomViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidEndEditing(_:)), name: .UITextFieldTextDidEndEditing, object: nil)
         
-        self.view.addSubview(textField)
+        view.addSubview(textField)
     }
     
     // TextFieldのTextが変更された時に呼ばれる
@@ -79,6 +68,16 @@ class CustomViewController: UIViewController {
         print("Notification->UITextFieldTextDidEndEditing!")
     }
     
+    private func configurePlaceHolderTextView() {
+        placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+        placeHolderTextView.placeHolder = "プレースホルダー"
+        placeHolderTextView.placeHolderColor = UIColor.gray
+        placeHolderTextView.borderColor = UIColor.blue
+        placeHolderTextView.borderWidth = 5
+        placeHolderTextView.cornerRadius = 10
+        view.addSubview(placeHolderTextView)
+    }
+    
     func configureButton() {
         let button = UIButton(type: .system)
         button.frame.size = CGSize(width: width, height: buttonHeight)
@@ -89,13 +88,13 @@ class CustomViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         
-        self.view.addSubview(button)
+        view.addSubview(button)
     }
     
     func tapButton(_ sender: UIButton) {
         print("TapButton!")
-        textView?.text = textView?.text ?? "" + "+addText"
-        textView?.textAlignment = .center
+        textView.text = textView.text + "+addText"
+        textView.textAlignment = .center
         
         textField.text = textField.text! + "+addText"
         

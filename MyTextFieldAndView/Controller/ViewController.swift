@@ -19,20 +19,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 初期化
-//        let placeHolderTextView = PlaceHolderTextView.init(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+        configureTextField()
+        configureTextView()
+        configurePlaceHolderTextView()
         
-        // プレースホルダーに値を設定する
-        placeHolderTextView.placeHolder = "プレースホルダー"
-        placeHolderTextView.placeHolderColor = UIColor.gray
-        placeHolderTextView.borderColor = UIColor.blue
-        placeHolderTextView.borderWidth = 5
-        placeHolderTextView.cornerRadius = 10
-        
-        // 画面に表示
-        self.view.addSubview(placeHolderTextView)
-        
-        
+    }
+    
+    private func configureTextField() {
         textField.text = "ONE OK ROCK"
         textField.textColor = UIColor.blue
         textField.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -49,12 +42,14 @@ class ViewController: UIViewController {
         
 //        textField.adjustsFontSizeToFitWidth = true
 //        textField.minimumFontSize = 2
-        
+//        
 //        textField.leftViewMode = .always
         
         textField.delegate = self
+    }
+    
+    private func configureTextView() {
         textView.delegate = self
-        
         
 //        let myTextView = MyTextView(frame: CGRect(x: 50, y: 50, width: 100, height: 100))
 //        myTextView.textAlignment
@@ -62,13 +57,16 @@ class ViewController: UIViewController {
 //        myTextView.placeHolder = "SCANDAL"
 //        myTextView.placeHolderColor = UIColor.lightGray.withAlphaComponent(0.6)
 //        self.view.addSubview(myTextView)
-        
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func configurePlaceHolderTextView() {
+        placeHolderTextView = PlaceHolderTextView(frame: CGRect(x: 67, y: 300, width: 240, height: 240))
+        placeHolderTextView.placeHolder = "プレースホルダー"
+        placeHolderTextView.placeHolderColor = UIColor.gray
+        placeHolderTextView.borderColor = UIColor.blue
+        placeHolderTextView.borderWidth = 5
+        placeHolderTextView.cornerRadius = 10
+        view.addSubview(placeHolderTextView)
     }
 
 

@@ -87,10 +87,10 @@
 		7F7E632B1DC2F2FE00DD1A36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7F7E633A1DC3085D00DD1A36 /* PlaceHolderTextView.swift */,
 				7F7E633B1DC3085D00DD1A36 /* MyTextView.swift */,
 				7F7E633C1DC3085D00DD1A36 /* MyTextField.swift */,
 				7F7E633D1DC3085D00DD1A36 /* CustomTextView.swift */,
+				7F7E633A1DC3085D00DD1A36 /* PlaceHolderTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
