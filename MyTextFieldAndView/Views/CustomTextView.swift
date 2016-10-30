@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class CustomTextView: UITextView {
     
+    // MARK: - placeholer
+    
     private let placeholderLabel = UILabel()
     
     // default is nil. string is drawn 70% gray
@@ -20,27 +22,37 @@ class CustomTextView: UITextView {
         }
     }
     
-    init(frame: CGRect) {
-        super.init(frame: frame, textContainer: nil)
-        initialize()
-        drawPlaceholder(in: frame)
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func initialize() {
-        // 通知を登録する
-        NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
-    }
+    // MARK: - initializers
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func drawPlaceholder(in rect: CGRect) {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    init() {
+        super.init(frame: .null, textContainer: nil)
+    }
+    
+    init(frame: CGRect) {
+        super.init(frame: frame, textContainer: nil)
+        observeTextDidChange()
+        configurePlaceholder(in: frame)
+    }
+    
+    
+    // MARK: - private methods
+    
+    private func observeTextDidChange() {
+        // 通知を登録する
+        NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
+    }
+    
+    private func configurePlaceholder(in rect: CGRect) {
         placeholderLabel.frame = rect
 //        placeholderLabel.frame.origin = CGPoint.zero
         placeholderLabel.text = placeholder
@@ -72,7 +84,7 @@ class CustomTextView: UITextView {
     }
     
     
-    // MARK: - override property or method
+    // MARK: - override properties
     
     override var text: String! {
         didSet {
@@ -88,12 +100,13 @@ class CustomTextView: UITextView {
         }
     }
     
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//    }
-    
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
 
 }
 

@@ -10,11 +10,9 @@ import UIKit
 
 class CustomViewController: UIViewController {
     
-//    var textView: MyTextView!
-    var textView: CustomTextView!
-    
-    var textField: MyTextField!
-    var placeHolderTextView: PlaceHolderTextView!
+    var textView = CustomTextView(frame: CGRect.zero)
+    var textField = UITextField(frame: CGRect.zero)
+    var placeHolderTextView = PlaceHolderTextView(frame: CGRect.zero)
     
     let width: CGFloat = 200
     let textViewHeight: CGFloat = 100
@@ -34,7 +32,6 @@ class CustomViewController: UIViewController {
     }
     
     func configureTextView() {
-        textView = CustomTextView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: textViewHeight)))
         textView.frame.size = CGSize(width: width, height: textViewHeight)
         textView.layer.position = CGPoint(x: centerPositionX, y: 100)
         textView.text = "Fist text"
