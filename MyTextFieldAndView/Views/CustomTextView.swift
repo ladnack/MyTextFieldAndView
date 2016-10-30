@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CustomTextView: UITextView {
+final class CustomTextView: UITextView {
     
     // MARK: - placeholer
     
@@ -19,19 +19,14 @@ class CustomTextView: UITextView {
     @IBInspectable var placeholder: String? {
         didSet {
             print("placeholder did set.")
+            placeholderLabel.text = placeholder
+            // sizeToFit()がないとLabelが表示されない
+            placeholderLabel.sizeToFit()
         }
     }
     
     
     // MARK: - initializers
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     init() {
         super.init(frame: .null, textContainer: nil)
@@ -40,7 +35,15 @@ class CustomTextView: UITextView {
     init(frame: CGRect) {
         super.init(frame: frame, textContainer: nil)
         observeTextDidChange()
-        configurePlaceholder(in: frame)
+        initPlaceholder()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -52,16 +55,20 @@ class CustomTextView: UITextView {
         NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
     }
     
-    private func configurePlaceholder(in rect: CGRect) {
-        placeholderLabel.frame = rect
-//        placeholderLabel.frame.origin = CGPoint.zero
-        placeholderLabel.text = placeholder
-        placeholderLabel.font = self.font
+    // Placeholerの初期化設定(1回のみ)
+    private func initPlaceholder() {
+        // sizeToFit()を使うならいらないかも
+        placeholderLabel.frame = frame
+        self.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
+        placeholderLabel.frame.origin = CGPoint(x: 8, y: 5)
+        // default is clear
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
-        placeholderLabel.textAlignment = self.textAlignment
-//        placeholderLabel.textAlignment = .center
-        placeholderLabel.sizeToFit()
+        
+        placeholderLabel.font = font
+        print(placeholderLabel.font.pointSize)
+        placeholderLabel.textAlignment = textAlignment
         
         self.addSubview(placeholderLabel)
 //        self.sendSubview(toBack: placeholderLabel)
@@ -96,7 +103,14 @@ class CustomTextView: UITextView {
     override var textAlignment: NSTextAlignment {
         didSet {
             print("didiSet: \(textAlignment)")
-            placeholderLabel.textAlignment = self.textAlignment
+            placeholderLabel.textAlignment = textAlignment
+        }
+    }
+    
+    override var font: UIFont? {
+        didSet {
+            print("didiSet: \(font)")
+            placeholderLabel.font = font
         }
     }
     

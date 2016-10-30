@@ -10,15 +10,15 @@ import UIKit
 
 class CustomViewController: UIViewController {
     
-    var textView = CustomTextView(frame: CGRect.zero)
-    var textField = UITextField(frame: CGRect.zero)
-    var placeHolderTextView = PlaceHolderTextView(frame: CGRect.zero)
+    private var textView = CustomTextView(frame: CGRect.zero)
+    private var textField = UITextField(frame: CGRect.zero)
+    private var placeHolderTextView = PlaceHolderTextView(frame: CGRect.zero)
     
-    let width: CGFloat = 200
-    let textViewHeight: CGFloat = 100
-    let textFieldhHeight: CGFloat = 50
-    let buttonHeight: CGFloat = 50
-    var centerPositionX: CGFloat { return self.view.frame.width / 2}
+    private let width: CGFloat = 200
+    private let textViewHeight: CGFloat = 100
+    private let textFieldhHeight: CGFloat = 50
+    private let buttonHeight: CGFloat = 50
+    private var centerPositionX: CGFloat { return self.view.frame.width / 2}
     
     
     override func viewDidLoad() {
@@ -31,17 +31,20 @@ class CustomViewController: UIViewController {
         
     }
     
-    func configureTextView() {
+    private func configureTextView() {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
         textView.layer.position = CGPoint(x: centerPositionX, y: 100)
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.borderWidth = 2
         textView.text = "Fist text"
+        textView.font = .systemFont(ofSize: 26.0)
         textView.placeholder = "Placeholder"
         textView.delegate = self
         
         view.addSubview(textView)
     }
     
-    func configureTextField() {
+    private func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
         textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
         textField.text = "Fist text"
@@ -56,12 +59,12 @@ class CustomViewController: UIViewController {
     }
     
     // TextFieldのTextが変更された時に呼ばれる
-    func textFieldTextDidChanged(_ notification: NSNotification) {
+    @objc private func textFieldTextDidChanged(_ notification: NSNotification) {
         print("Notification->UITextFieldTextDidChange!")
     }
     
     // TextFieldのTextが編集終了時に呼ばれる
-    func textFieldTextDidEndEditing(_ notification: NSNotification) {
+    @objc private func textFieldTextDidEndEditing(_ notification: NSNotification) {
         print("Notification->UITextFieldTextDidEndEditing!")
     }
     
@@ -75,7 +78,7 @@ class CustomViewController: UIViewController {
         view.addSubview(placeHolderTextView)
     }
     
-    func configureButton() {
+    private func configureButton() {
         let button = UIButton(type: .system)
         button.frame.size = CGSize(width: width, height: buttonHeight)
         button.layer.position = CGPoint(x: centerPositionX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
@@ -88,14 +91,19 @@ class CustomViewController: UIViewController {
         view.addSubview(button)
     }
     
-    func tapButton(_ sender: UIButton) {
+    @objc private func tapButton(_ sender: UIButton) {
         print("TapButton!")
-        textView.text = textView.text + "+addText"
-        textView.textAlignment = .center
+//        textView.text = textView.text + "+addText"
+//        textView.textAlignment = .center
+//        
+//        textField.text = textField.text! + "+addText"
+//        
+//        placeHolderTextView.text = placeHolderTextView.text + "+addText"
         
-        textField.text = textField.text! + "+addText"
+        if let test = textField.text, let size = Int(test) {
+            textView.font = .systemFont(ofSize: CGFloat(size))
+        }
         
-        placeHolderTextView.text = placeHolderTextView.text + "+addText"
     }
     
 
