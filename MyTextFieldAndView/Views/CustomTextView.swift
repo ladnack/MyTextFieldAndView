@@ -59,7 +59,7 @@ final class CustomTextView: UITextView {
     private func initPlaceholder() {
         // sizeToFit()を使うならいらないかも
         placeholderLabel.frame = frame
-        self.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
+        self.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         placeholderLabel.frame.origin = CGPoint(x: 8, y: 5)
         // default is clear
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)

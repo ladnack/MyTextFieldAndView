@@ -33,7 +33,7 @@ class CustomViewController: UIViewController {
     
     private func configureTextView() {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
-        textView.layer.position = CGPoint(x: centerPositionX, y: 100)
+        textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.borderWidth = 2
         textView.text = "Fist text"
@@ -46,7 +46,7 @@ class CustomViewController: UIViewController {
     
     private func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
-        textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
+        textField.frame.origin = CGPoint(x: centerPositionX - width / 2, y: textView.frame.origin.y + textViewHeight)
         textField.text = "Fist text"
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
@@ -79,9 +79,9 @@ class CustomViewController: UIViewController {
     }
     
     private func configureButton() {
-        let button = UIButton(type: .system)
-        button.frame.size = CGSize(width: width, height: buttonHeight)
-        button.layer.position = CGPoint(x: centerPositionX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
+        let size = CGSize(width: width, height: buttonHeight)
+        let point = CGPoint(x: centerPositionX - width / 2, y: textField.frame.origin.y + textFieldhHeight)
+        let button = UIButton(frame: CGRect(origin: point, size: size))
         button.setTitle("Button", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
         button.setTitle("Pushed", for: .highlighted)
