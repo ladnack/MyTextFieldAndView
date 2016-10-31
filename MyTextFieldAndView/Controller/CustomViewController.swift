@@ -14,8 +14,8 @@ class CustomViewController: UIViewController {
     private var textField = UITextField(frame: CGRect.zero)
     private var placeHolderTextView = PlaceHolderTextView(frame: CGRect.zero)
     
-    private let width: CGFloat = 200
-    private let textViewHeight: CGFloat = 100
+    private let width: CGFloat = 300
+    private let textViewHeight: CGFloat = 300
     private let textFieldhHeight: CGFloat = 50
     private let buttonHeight: CGFloat = 50
     private var centerPositionX: CGFloat { return self.view.frame.width / 2}
@@ -27,7 +27,7 @@ class CustomViewController: UIViewController {
         configureTextView()
         configureTextField()
         configureButton()
-        configurePlaceHolderTextView()
+//        configurePlaceHolderTextView()
         
     }
     
@@ -36,9 +36,9 @@ class CustomViewController: UIViewController {
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.borderWidth = 2
-        textView.text = "Fist text"
+//        textView.text = "Fist text"
         textView.font = .systemFont(ofSize: 26.0)
-        textView.placeholder = "Placeholder"
+        textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
         textView.delegate = self
         
         view.addSubview(textView)
@@ -93,6 +93,8 @@ class CustomViewController: UIViewController {
     
     @objc private func tapButton(_ sender: UIButton) {
         print("TapButton!")
+        
+        // textを追加
 //        textView.text = textView.text + "+addText"
 //        textView.textAlignment = .center
 //        
@@ -100,9 +102,17 @@ class CustomViewController: UIViewController {
 //        
 //        placeHolderTextView.text = placeHolderTextView.text + "+addText"
         
-        if let test = textField.text, let size = Int(test) {
+        
+        // textSizeを変更
+        if let text = textField.text, let size = Int(text) {
             textView.font = .systemFont(ofSize: CGFloat(size))
         }
+        
+        
+        // textContainerInsetのtopを変更
+//        if let text = textField.text, let top = Int(text) {
+//            textView.textContainerInset = UIEdgeInsets(top: CGFloat(top), left: 0, bottom: 0, right: 0)
+//        }
         
     }
     
