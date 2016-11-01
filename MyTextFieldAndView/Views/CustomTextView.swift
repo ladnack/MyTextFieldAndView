@@ -36,16 +36,16 @@ final class CustomTextView: UITextView {
         self.init(frame: .zero)
     }
     
-    init(frame: CGRect) {
-        super.init(frame: frame, textContainer: nil)
+    override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
+        super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
-        initPlaceholder()
+        configurePlaceholder()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         observeTextDidChange()
-        initPlaceholder()
+        configurePlaceholder()
     }
     
     deinit {
@@ -62,8 +62,9 @@ final class CustomTextView: UITextView {
     }
     
     // Placeholerの初期化設定(1回のみ)
-    private func initPlaceholder() {
+    private func configurePlaceholder() {
         // default is clear
+//        placeholderLabel.backgroundColor = UIColor.clear
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
@@ -116,6 +117,8 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
+            placeholderLabel.frame.size.width = textContainer.size.width - 4
+            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }
