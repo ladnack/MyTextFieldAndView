@@ -151,7 +151,7 @@ final class CustomTextView: UITextView {
      */
     
     
-    // MARK: - accessoryBar
+    // MARK: - accessoryView
     
     private let accessoryView = UIToolbar()
     

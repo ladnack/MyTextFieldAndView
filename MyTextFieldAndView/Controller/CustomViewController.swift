@@ -145,7 +145,7 @@ extension CustomViewController: UITextViewDelegate {
 extension CustomViewController: CustomTextViewDelegate {
     
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
-        print("Delegate->customTextViewShouldReturn")
+        print("Delegate->customTextViewShouldDone")
         return true
     }
     
