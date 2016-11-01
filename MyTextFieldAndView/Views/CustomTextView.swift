@@ -153,18 +153,18 @@ final class CustomTextView: UITextView {
     
     // MARK: - accessoryBar
     
-    private let accessoryBar = UIToolbar()
+    private let accessoryView = UIToolbar()
     
     var customDelegate: CustomTextViewDelegate?
     
     private func configureAccessoryBar() {
-        accessoryBar.sizeToFit()
+        accessoryView.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        accessoryBar.setItems([spacer, doneButton], animated: true)
+        accessoryView.setItems([spacer, doneButton], animated: true)
         
         // ツールバーをtextViewのアクセサリViewに設定する
-        self.inputAccessoryView = accessoryBar
+        self.inputAccessoryView = accessoryView
     }
     
     @objc private func doneButtonDidPush(_ sender: UIButton) {
@@ -173,10 +173,6 @@ final class CustomTextView: UITextView {
         
         // キーボードを閉じる
         self.resignFirstResponder()
-        
-//        guard let _ = customDelegate?.customTextViewShouldDone(self) else {
-//            return
-//        }
         
     }
     
