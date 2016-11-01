@@ -40,6 +40,7 @@ class CustomViewController: UIViewController {
         textView.font = .systemFont(ofSize: 26.0)
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
         textView.delegate = self
+        textView.customDelegate = self
         
         view.addSubview(textView)
     }
@@ -60,12 +61,12 @@ class CustomViewController: UIViewController {
     
     // TextFieldのTextが変更された時に呼ばれる
     @objc private func textFieldTextDidChanged(_ notification: NSNotification) {
-        print("Notification->UITextFieldTextDidChange!")
+//        print("Notification->UITextFieldTextDidChange!")
     }
     
     // TextFieldのTextが編集終了時に呼ばれる
     @objc private func textFieldTextDidEndEditing(_ notification: NSNotification) {
-        print("Notification->UITextFieldTextDidEndEditing!")
+//        print("Notification->UITextFieldTextDidEndEditing!")
     }
     
     private func configurePlaceHolderTextView() {
@@ -92,7 +93,7 @@ class CustomViewController: UIViewController {
     }
     
     @objc private func tapButton(_ sender: UIButton) {
-        print("TapButton!")
+//        print("TapButton!")
         
         // textを追加
 //        textView.text = textView.text + "+addText"
@@ -120,6 +121,8 @@ class CustomViewController: UIViewController {
 }
 
 
+// MARK: - delegate methods
+
 extension CustomViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -133,8 +136,22 @@ extension CustomViewController: UITextFieldDelegate {
 extension CustomViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        print("Delegate->textViewDidChange")
+//        print("Delegate->textViewDidChange")
     }
+    
+}
+
+
+extension CustomViewController: CustomTextViewDelegate {
+    
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
+        print("Delegate->customTextViewShouldReturn")
+        return true
+    }
+    
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        print("Delegate->custoTtextViewDidEndEditing")
+//    }
     
 }
 

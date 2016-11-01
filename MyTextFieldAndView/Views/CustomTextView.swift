@@ -85,13 +85,13 @@ final class CustomTextView: UITextView {
     
     // TextViewのTextが変更された時に呼ばれる
     @objc private func controlPlaceholder(_ notification: NSNotification) {
-        print("Notification->UITextViewTextDidChange!")
+//        print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
     }
     
     // TextViewのTextが編集終了時に呼ばれる
     @objc private func textViewTextDidEndEditing(_ notification: NSNotification) {
-        print("Notification->UITextViewTextDidEndEditing!")
+//        print("Notification->UITextViewTextDidEndEditing!")
     }
     
     private func placeholderIsHidden() {
@@ -155,6 +155,8 @@ final class CustomTextView: UITextView {
     
     private let accessoryBar = UIToolbar()
     
+    var customDelegate: CustomTextViewDelegate?
+    
     private func configureAccessoryBar() {
         accessoryBar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
@@ -166,15 +168,30 @@ final class CustomTextView: UITextView {
     }
     
     @objc private func doneButtonDidPush(_ sender: UIButton) {
+        // delegateの処理を行う
+        if let _ = customDelegate?.customTextViewShouldDone(self) {}
+        
         // キーボードを閉じる
         self.resignFirstResponder()
+        
+//        guard let _ = customDelegate?.customTextViewShouldDone(self) else {
+//            return
+//        }
         
     }
     
 }
 
+protocol CustomTextViewDelegate: UITextViewDelegate {
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
+}
 
-
+extension CustomTextViewDelegate {
+    // defaultの挙動
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
+        return true
+    }
+}
 
 
 
