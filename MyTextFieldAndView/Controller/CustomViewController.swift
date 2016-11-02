@@ -40,7 +40,9 @@ class CustomViewController: UIViewController {
         textView.font = .systemFont(ofSize: 26.0)
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
         textView.delegate = self
+        
         textView.customDelegate = self
+        textView.buttonTitle = "Hello"
         
         view.addSubview(textView)
     }

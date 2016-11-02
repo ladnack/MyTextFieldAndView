@@ -20,12 +20,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
-            
-            // 表示可能最大行数を指定(0 -> 行数は可変)
-            placeholderLabel.numberOfLines = 0
             placeholderLabel.sizeToFit()
-            // 単語の途中で改行されないようにする
-            placeholderLabel.lineBreakMode = .byWordWrapping
         }
     }
     
@@ -40,14 +35,14 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
-        configureAccessoryBar()
+        configureAccessoryView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         observeTextDidChange()
         configurePlaceholder()
-        configureAccessoryBar()
+        configureAccessoryView()
     }
     
     deinit {
@@ -57,10 +52,12 @@ final class CustomTextView: UITextView {
     
     // MARK: - private methods
     
+    private let notificatin = NotificationCenter.default
+    
     private func observeTextDidChange() {
         // 通知を登録する
-        NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
+        notificatin.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+        notificatin.addObserver(self, selector: #selector(textViewTextDidEndEditing(_:)), name: .UITextViewTextDidEndEditing, object: nil)
     }
     
     // Placeholerの初期化設定(1回のみ)
@@ -70,6 +67,10 @@ final class CustomTextView: UITextView {
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
+        // 表示可能最大行数を指定(0 -> 行数は可変)
+        placeholderLabel.numberOfLines = 0
+        // 単語の途中で改行されないようにする
+        placeholderLabel.lineBreakMode = .byWordWrapping
         
         // 変更され次第更新するもの
         placeholderLabel.font = font
@@ -154,12 +155,26 @@ final class CustomTextView: UITextView {
     // MARK: - accessoryView
     
     private let accessoryView = UIToolbar()
+    // default is done
+    var doneButton = UIBarButtonItem()
+//    var buttonItemStyle: UIBarButtonSystemItem = .done
+    var buttonTitle: String = "Done" {
+        didSet {
+            doneButton.possibleTitles = [buttonTitle]
+        }
+    }
     
     var customDelegate: CustomTextViewDelegate?
     
-    private func configureAccessoryBar() {
+    private func configureAccessoryView() {
         accessoryView.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
+        
+//        let doneButton = UIBarButtonItem(barButtonSystemItem: buttonItemStyle, target: self, action: #selector(doneButtonDidPush(_:)))
+        
+//        doneButton.possibleTitles = [buttonTitle]
+        doneButton.target = self
+        doneButton.action = #selector(doneButtonDidPush(_:))
+        
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         accessoryView.setItems([spacer, doneButton], animated: true)
         
