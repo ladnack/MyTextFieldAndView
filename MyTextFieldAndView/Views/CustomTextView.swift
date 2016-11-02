@@ -74,14 +74,12 @@ final class CustomTextView: UITextView {
         
         // 変更され次第更新するもの
         placeholderLabel.font = font
-        print(placeholderLabel.font.pointSize)
         placeholderLabel.textAlignment = textAlignment
-        // default is (8, 0, 8, 0)
+        // textContainerInsetのdidSetを想起させる -> default is (8, 0, 8, 0)
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-//        self.sendSubview(toBack: placeholderLabel)
-        print("Add placeholderLabel as subView")
+//        print("Add placeholderLabel as subView")
     }
     
     // TextViewのTextが変更された時に呼ばれる
@@ -121,7 +119,7 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             placeholderLabel.frame.size.width = textContainer.size.width - 4
-            print(textContainer.size)
+//            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }
@@ -130,9 +128,6 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
-            
-            print(self.frame)
-            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
         }
     }
     
@@ -155,32 +150,29 @@ final class CustomTextView: UITextView {
     // MARK: - accessoryView
     
     private let accessoryView = UIToolbar()
-    // default is done
-    var doneButton = UIBarButtonItem()
-//    var buttonItemStyle: UIBarButtonSystemItem = .done
+    
+    private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
+    
     var buttonTitle: String = "Done" {
         didSet {
-            doneButton.possibleTitles = [buttonTitle]
+            doneButton.title = buttonTitle
         }
     }
     
-    var customDelegate: CustomTextViewDelegate?
-    
     private func configureAccessoryView() {
-        accessoryView.sizeToFit()
-        
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: buttonItemStyle, target: self, action: #selector(doneButtonDidPush(_:)))
-        
-//        doneButton.possibleTitles = [buttonTitle]
-        doneButton.target = self
-        doneButton.action = #selector(doneButtonDidPush(_:))
-        
+        doneButton.title = buttonTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         accessoryView.setItems([spacer, doneButton], animated: true)
         
         // ツールバーをtextViewのアクセサリViewに設定する
         self.inputAccessoryView = accessoryView
+        accessoryView.sizeToFit()
     }
+    
+    
+    // MARK: - delegate
+    
+    var customDelegate: CustomTextViewDelegate?
     
     @objc private func doneButtonDidPush(_ sender: UIButton) {
         // delegateの処理を行う
