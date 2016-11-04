@@ -187,14 +187,16 @@ final class CustomTextView: UITextView {
 
 protocol CustomTextViewDelegate: UITextViewDelegate {
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
+//    func textViewShouldBeginEditing(_ textView: CustomTextView) -> Bool
 }
 
-extension CustomTextViewDelegate {
-    // defaultの挙動
-    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
-        return true
-    }
-}
+//extension CustomTextViewDelegate {
+//    // defaultの挙動
+//    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
+//        return true
+//    }
+//    
+//}
 
 
 
