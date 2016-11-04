@@ -35,7 +35,10 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
-        configureAccessoryView()
+        if accessaryViewNotUse {
+            configureAccessoryView()
+        }
+//        configureAccessoryView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -157,6 +160,15 @@ final class CustomTextView: UITextView {
         }
     }
     
+    var accessaryViewNotUse = false
+    
+    // defaultではaccessoryViewを表示
+    var accessoryViewIsHidden = false {
+        didSet {
+            accessoryView.isHidden = accessoryViewIsHidden
+        }
+    }
+    
     private func configureAccessoryView() {
         doneButton.title = buttonTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -186,18 +198,10 @@ final class CustomTextView: UITextView {
     
 }
 
+
 protocol CustomTextViewDelegate: UITextViewDelegate {
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
-//    func textViewShouldBeginEditing(_ textView: CustomTextView) -> Bool
 }
-
-//extension CustomTextViewDelegate {
-//    // defaultの挙動
-//    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
-//        return true
-//    }
-//    
-//}
 
 
 

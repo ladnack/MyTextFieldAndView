@@ -42,6 +42,8 @@ class CustomViewController: UIViewController {
         
         textView.customDelegate = self
         textView.buttonTitle = "Hello"
+//        textView.accessoryViewIsHidden = true
+        textView.accessaryViewNotUse = true
         
         view.addSubview(textView)
     }
@@ -151,7 +153,7 @@ extension CustomViewController: CustomTextViewDelegate {
     }
     
 //    func textViewDidEndEditing(_ textView: UITextView) {
-//        print("Delegate->custoTtextViewDidEndEditing")
+//        print("Delegate->customTtextViewDidEndEditing")
 //    }
     
 }
