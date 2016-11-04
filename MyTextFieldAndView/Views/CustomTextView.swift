@@ -79,7 +79,6 @@ final class CustomTextView: UITextView {
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-//        print("Add placeholderLabel as subView")
     }
     
     // TextViewのTextが変更された時に呼ばれる
@@ -119,7 +118,6 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             placeholderLabel.frame.size.width = textContainer.size.width - 4
-//            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }
@@ -179,9 +177,6 @@ final class CustomTextView: UITextView {
     }
     
     @objc private func doneButtonDidPush(_ sender: UIButton) {
-        // delegateの処理を行う
-//        if let _ = customDelegate?.customTextViewShouldDone(self) {}
-        
         if customDelegate?.customTextViewShouldDone(self) != false {
             // キーボードを閉じる
             self.resignFirstResponder()
