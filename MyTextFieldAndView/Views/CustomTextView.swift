@@ -35,10 +35,7 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
-        if accessaryViewNotUse {
-            configureAccessoryView()
-        }
-//        configureAccessoryView()
+        configureAccessoryView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -160,8 +157,6 @@ final class CustomTextView: UITextView {
         }
     }
     
-    var accessaryViewNotUse = false
-    
     // defaultではaccessoryViewを表示
     var accessoryViewIsHidden = false {
         didSet {
@@ -177,6 +172,7 @@ final class CustomTextView: UITextView {
         // ツールバーをtextViewのアクセサリViewに設定する
         self.inputAccessoryView = accessoryView
         accessoryView.sizeToFit()
+        accessoryView.isHidden = accessoryViewIsHidden
     }
     
     
@@ -202,8 +198,6 @@ final class CustomTextView: UITextView {
 protocol CustomTextViewDelegate: UITextViewDelegate {
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
 }
-
-
 
 
 
