@@ -49,7 +49,7 @@ final class CustomTextView: UITextView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        notificatin.removeObserver(self)
     }
     
     
@@ -78,8 +78,8 @@ final class CustomTextView: UITextView {
         // 変更され次第更新するもの
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
-        // textContainerInsetのdidSetを想起させる -> default is (8, 0, 8, 0)
-        self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+        placeholderLabel.sizeToFit()
         
         self.addSubview(placeholderLabel)
     }
@@ -151,6 +151,12 @@ final class CustomTextView: UITextView {
     // MARK: - accessoryView
     
     private let accessoryView = UIToolbar()
+    
+    var accessoryViewStyle: UIBarStyle = .default {
+        didSet {
+            accessoryView.barStyle = accessoryViewStyle
+        }
+    }
     
     private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
     
