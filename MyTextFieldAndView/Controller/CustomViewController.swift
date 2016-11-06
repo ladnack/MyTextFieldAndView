@@ -42,12 +42,12 @@ class CustomViewController: UIViewController {
         
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
         textView.customDelegate = self
-        textView.buttonTitle = "Hello"
+        textView.barItemTitle = "Hello"
 //        textView.accessoryViewIsHidden = true
 //        textView.accessoryViewStyle = .blackOpaque
         textView.accessoryViewColor = UIColor.red
-        textView.buttonColor = UIColor.yellow
-        textView.buttonFont = UIFont.italicSystemFont(ofSize: 20)
+        textView.barItemTitleColor = UIColor.yellow
+        textView.barItemTitleFont = UIFont.italicSystemFont(ofSize: 20)
         
         view.addSubview(textView)
     }
