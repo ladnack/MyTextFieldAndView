@@ -35,9 +35,9 @@ class CustomViewController: UIViewController {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.layer.borderColor = UIColor.black.cgColor
-        textView.layer.borderWidth = 2
+        textView.layer.borderWidth = 1
 //        textView.text = "Fist text"
-        textView.font = .systemFont(ofSize: 26.0)
+//        textView.font = .systemFont(ofSize: 26.0)
         textView.keyboardAppearance = .dark
         
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
@@ -119,7 +119,7 @@ class CustomViewController: UIViewController {
         
         // textContainerInsetのtopを変更
 //        if let text = textField.text, let top = Int(text) {
-//            textView.textContainerInset = UIEdgeInsets(top: CGFloat(top), left: 0, bottom: 0, right: 0)
+//            textView.textContainerInset.top = CGFloat(top)
 //        }
         
     }

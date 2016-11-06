@@ -25,7 +25,7 @@ final class CustomTextView: UITextView {
     }
     
     // adjust label position
-    private let paddingLeft: CGFloat = 20
+    private let paddingLeft: CGFloat = 2
     
     
     // MARK: - initializers
