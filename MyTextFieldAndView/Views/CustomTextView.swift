@@ -25,7 +25,7 @@ final class CustomTextView: UITextView {
     }
     
     // adjust label position
-    private let paddingLeft: CGFloat = 2
+    private let paddingLeft: CGFloat = 20
     
     
     // MARK: - initializers
@@ -79,7 +79,6 @@ final class CustomTextView: UITextView {
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
-        placeholderLabel.sizeToFit()
         
         self.addSubview(placeholderLabel)
     }
@@ -152,17 +151,39 @@ final class CustomTextView: UITextView {
     
     private let accessoryView = UIToolbar()
     
+    private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
+    
+    var buttonTitle: String = "Done" {
+        didSet {
+            doneButton.title = buttonTitle
+        }
+    }
+    
+    var buttonFont: UIFont? {
+        didSet {
+            doneButton.setTitleTextAttributes([
+                NSFontAttributeName: buttonFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize),
+                NSForegroundColorAttributeName: buttonColor ?? UIColor.black], for: .normal)
+        }
+    }
+    
+    var buttonColor: UIColor? {
+        didSet {
+            doneButton.setTitleTextAttributes([
+                NSForegroundColorAttributeName: buttonColor ?? UIColor.black,
+                NSFontAttributeName: buttonFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)], for: .normal)
+        }
+    }
+    
     var accessoryViewStyle: UIBarStyle = .default {
         didSet {
             accessoryView.barStyle = accessoryViewStyle
         }
     }
     
-    private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
-    
-    var buttonTitle: String = "Done" {
+    var accessoryViewColor: UIColor? {
         didSet {
-            doneButton.title = buttonTitle
+            accessoryView.backgroundColor = accessoryViewColor
         }
     }
     
@@ -182,6 +203,7 @@ final class CustomTextView: UITextView {
         self.inputAccessoryView = accessoryView
         accessoryView.sizeToFit()
         accessoryView.isHidden = accessoryViewIsHidden
+        accessoryViewStyle = accessoryView.barStyle
     }
     
     

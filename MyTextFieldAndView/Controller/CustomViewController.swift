@@ -38,11 +38,16 @@ class CustomViewController: UIViewController {
         textView.layer.borderWidth = 2
 //        textView.text = "Fist text"
         textView.font = .systemFont(ofSize: 26.0)
-        textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
+        textView.keyboardAppearance = .dark
         
+        textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
         textView.customDelegate = self
         textView.buttonTitle = "Hello"
 //        textView.accessoryViewIsHidden = true
+//        textView.accessoryViewStyle = .blackOpaque
+        textView.accessoryViewColor = UIColor.red
+        textView.buttonColor = UIColor.yellow
+        textView.buttonFont = UIFont.italicSystemFont(ofSize: 20)
         
         view.addSubview(textView)
     }
