@@ -20,7 +20,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
-            placeholderLabel.sizeToFit()
+            adjustLabelToFit()
         }
     }
     
@@ -76,7 +76,7 @@ final class CustomTextView: UITextView {
         placeholderLabel.lineBreakMode = .byWordWrapping
         
         // 変更され次第更新するもの
-        placeholderLabel.font = font
+        placeholderLabel.font = font ?? .systemFont(ofSize: 14)
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
         
@@ -96,6 +96,12 @@ final class CustomTextView: UITextView {
     
     private func placeholderIsHidden() {
         placeholderLabel.isHidden = !text.isEmpty
+    }
+    
+    // text領域が変更された時に調整を行う
+    private func adjustLabelToFit() {
+        placeholderLabel.frame.size.width = textContainer.size.width - paddingLeft * 2
+        placeholderLabel.sizeToFit()
     }
     
     
@@ -119,8 +125,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
-            placeholderLabel.frame.size.width = textContainer.size.width - paddingLeft * 2
-            placeholderLabel.sizeToFit()
+            adjustLabelToFit()
         }
     }
     
@@ -153,20 +158,20 @@ final class CustomTextView: UITextView {
     
     private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
     
-    var barItemTitle: String = "Done" {
+    @IBInspectable var barItemTitle: String = "Done" {
         didSet {
             doneButton.title = barItemTitle
         }
     }
     
-    var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
+    @IBInspectable var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
         didSet {
             doneButton.setTitleTextAttributes([
                 NSFontAttributeName: barItemTitleFont, NSForegroundColorAttributeName: barItemTitleColor], for: .normal)
         }
     }
     
-    var barItemTitleColor: UIColor = UIColor.black {
+    @IBInspectable var barItemTitleColor: UIColor = UIColor.black {
         didSet {
             doneButton.setTitleTextAttributes([
                 NSForegroundColorAttributeName: barItemTitleColor, NSFontAttributeName: barItemTitleFont], for: .normal)
@@ -179,14 +184,14 @@ final class CustomTextView: UITextView {
         }
     }
     
-    var accessoryViewColor: UIColor? {
+    @IBInspectable var accessoryViewColor: UIColor? {
         didSet {
             accessoryView.backgroundColor = accessoryViewColor
         }
     }
     
     // defaultではaccessoryViewを表示
-    var accessoryViewIsHidden = false {
+    @IBInspectable var accessoryViewIsHidden: Bool = false {
         didSet {
             accessoryView.isHidden = accessoryViewIsHidden
         }
